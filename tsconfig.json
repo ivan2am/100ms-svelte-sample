@@ -1,0 +1,18 @@
+{
+    "extends": "@tsconfig/svelte/tsconfig.json",
+
+    "include": ["src/**/*", "src/node_modules"],
+    "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
+    "compilerOptions": {
+      "paths": {
+        "$components/*": ["./src/components/*"],
+        "$components/ui": ["./src/components/ui/index"],
+        "$actions": ["./src/actions/index"],
+        "$lib/*": ["./src/lib/*"],
+        "$pages/*": ["./src/pages/*"],
+        "$stores/*": ["./src/stores/*"],
+        "$utils/*": ["./src/utils/*"]
+      },
+      "lib": [ "es2015" ]
+    }
+  }
