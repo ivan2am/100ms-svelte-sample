@@ -16,10 +16,13 @@
     let msPeers = peers();
     const peerTracking = new Set();
 
+    window.peersCall = peers;
 
     hmsStore.subscribe((el) => {
         msPeers = peers();
-
+        window.mspeers = msPeers;
+        console.log('Peers: ', msPeers);
+        console.log('EL: ', el);
 
         // msPeers.forEach(p => hmsActions.attachVideo(p.id, p));
     });
@@ -36,7 +39,7 @@
     </div>
     <button type="button" class="btn-primary" id="join-btn" on:click="{() => joinRoom()}">Join</button>
 </form>
-
+<button on:click="{() => leaveRoom()}">Leave</button>
 
 <div>
 

@@ -1,14 +1,18 @@
 <script>
-    import { hmsActions } from "../utils/Setup100ms";
+    import { selectVideoTrackByPeerID } from "@100mslive/hms-video-store";
+    import { hmsActions, hmsStore } from "../utils/Setup100ms";
 
-    export let peer;
-    let videoTag = {};
-    let audioTag;
+      export let peer;
+      let videoTag = {};
+      let audioTag;
 
-    if (peer.videoTrack) {
-        hmsActions.attachVideo(peer.videoTrack, videoTag);
-    }
-</script>
+      hmsStore.subscribe((track) => {
+          if (track) {
+          hmsActions.attachVideo(track.id, videoTag);
+      }
+      }, selectVideoTrackByPeerID(peer.id));
 
-<video autoplay muted playsinline bind:this={videoTag} />
-<audio bind:this={audioTag} />
+  </script>
+
+  <video autoplay muted playsinline bind:this={videoTag} />
+  <audio bind:this={audioTag} />
